@@ -36,7 +36,7 @@ namespace CobolToCSharp
        private static int BlockCount = 0;
        #region Regex        
         private static Regex RegexCOMMENT = new Regex(@"^\*");
-        private static string StringRegexStatement = @"(ACCEPT[ ]+|INSPECT[ ]+|MOVE[ ]+|IF|ELSE[ ]+IF|END-IF|PERFORM[ ]+|ELSE|DISPLAY[ ]+|ADD[ ]+|SUBTRACT[ ]+|COMPUTE[ ]+|CALL[ ]+|DIVIDE[ ]+|MULTIPLY[ ]+|GO[ ]+TO|GO[ ]+|EXIT[ ]*\.|EXIT[ ]+PROGRAM|END[ ]+PROGRAM|STOP[ ]+RUN)".RegexUpperLower();
+        private static string StringRegexStatement = @"(ACCEPT[ ]+|INSPECT[ ]+|MOVE[ ]+|IF|ELSE[ ]+IF|END-IF|PERFORM[ ]+|ELSE|DISPLAY[ ]+|ADD[ ]+|SUBTRACT[ ]+|COMPUTE[ ]+|CALL[ ]+|DIVIDE[ ]+|MULTIPLY[ ]+|GO[ ]+TO|GO[ ]+|EXIT[ ]*\.|EXIT[ ]+PROGRAM|END[ ]+PROGRAM|STOP[ ]+RUN|INITIALIZE[ ]+|SET[ ]+|CLOSE[ ]+|OPEN[ ]+|READ[ ]+|WRITE[ ]+|DELETE[ ]+|REWRITE[ ]+|SEARCH[ ]+|EVALUATE[ ]+|NEXT[ ]+|RETURN[ ]+|CONTINUE[ ]+|GOBACK[ ]+|END-READ[ ]+|END-WRITE[ ]+)";
         private static Regex RegexStatement = new Regex($"^{StringRegexStatement}");
         private static Regex RegexContainsStatement = new Regex($"{StringRegexStatement}");
         private static readonly Regex ParagraphRegex = new Regex(@"^[a-zA-Z0-9-_]+\.$");
@@ -81,14 +81,7 @@ namespace CobolToCSharp
             Console.WriteLine("Start Processing...");
             
 
-            string[] Files = new string[] {  "sc031.cbl"
-                                            ,"sc033.cbl"
-                                            ,"sc499.cbl"
-                                            ,"sc500.cbl"
-                                            ,"sc601.cbl"
-                                            ,"sc605.cbl"
-                                            ,"sc607.cbl"
-                                            ,"sc700.cbl"};
+            string[] Files = new string[] {  "sc605.cbl"};
             foreach (var File in Files)
             {
                 QueryStatementConverter.CursorSelectQueries = new Dictionary<string, string>();
